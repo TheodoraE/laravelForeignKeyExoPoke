@@ -9,6 +9,7 @@
                   <h5 class="card-title">{{$show->name}}</h5>
                   <p class="card-text">Niveau : {{$show->level}}</p>
                   {{-- <p class="card-text">Type : {{$show->pokemons->name}}</p> --}}
+                  <a href="/pokemons/{{$show->id}}/edit" class="btn btn-warning">EDITER</a>
                   <a href="/" class="btn btn-primary">Retour</a>
                 </div>
             </div>

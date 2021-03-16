@@ -33,5 +33,8 @@
 
             <button type="submit" class="btn btn-success mt-4">Ajouter</button>
         </form>
+
+        <p>Normal, Combat, Vol, Poison, Sol, Roche, Insecte, Spectre, Acier, Feu, Eau , Plante
+, Electrik, Psy, Glace, Dragon, Ténèbres, Fée</p>
     </div>
 @endsection

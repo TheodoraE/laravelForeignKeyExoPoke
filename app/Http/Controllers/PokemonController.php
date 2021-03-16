@@ -38,7 +38,7 @@ class PokemonController extends Controller
     {
         $validation = $request->validate([
             "name" => 'required',
-            "level" => 'integer',
+            "level" => 'integer|min:1|max:100',
             "url" => 'required',
         ]);
 
@@ -69,9 +69,10 @@ class PokemonController extends Controller
      * @param  \App\Models\Pokemon  $pokemon
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pokemon $pokemon)
+    public function edit($id)
     {
-        //
+        $edit = Pokemon::find($id);
+        return view('pages.editPokemon', compact('edit'));
     }
 
     /**
@@ -81,9 +82,26 @@ class PokemonController extends Controller
      * @param  \App\Models\Pokemon  $pokemon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pokemon $pokemon)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            "name" => 'required',
+            "level" => 'integer|min:1|max:100',
+            "url" => 'required',
+        ]);
+        
+        $update = Pokemon::find($id);
+
+        $update->name = $request->name;
+        $update->level = $request->level;
+
+        Storage::delete('public.img/'.$update->url);
+
+        Storage::put('public/img', $request->url);
+        $update->url = $request->file('url')->hashName();
+        $update->save();
+
+        return redirect('/');
     }
 
     /**

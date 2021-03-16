@@ -38,5 +38,39 @@
               @endforeach
             </tbody>
         </table>
+
+        <h1 class="my-4">Les types</h1>
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Pokemon</th>
+                {{-- <th scope="col"> </th> --}}
+                <th scope="col"> </th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($types as $item)
+                <tr>
+                    <th scope="row">{{$item->id}}</th>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->pokemons->name}}</td>
+                    {{-- <td>
+                        <img src="{{asset('storage/img/'.$item->pokemons->url)}}" alt="" height="100px">
+                    </td> --}}
+                    {{-- Delete --}}
+                    <td>
+                        <form action="/pokemons/{{$item->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">DELETE</button>
+                        </form>
+                    </td>
+                </tr>
+              @endforeach
+            </tbody>
+        </table>
     </div>
 @endsection
