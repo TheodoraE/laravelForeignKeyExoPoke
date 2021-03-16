@@ -22,7 +22,7 @@
             </div>
 
             <div class="form-group">
-                <label for="pokemon_id">Séléctioner un Pokemon : </label>
+                <label for="pokemon_id">Séléctionner un Pokemon : </label>
                 <select name="pokemon_id" id="pokemon_id">
                     <option value="">Aucun</option>
                     @foreach ($pokemons as $item)

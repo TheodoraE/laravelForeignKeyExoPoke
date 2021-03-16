@@ -11,6 +11,7 @@
                 <th scope="col">Nom</th>
                 <th scope="col"> </th>
                 <th scope="col"> </th>
+                <th scope="col"> </th>
               </tr>
             </thead>
             <tbody>
@@ -18,6 +19,9 @@
                 <tr>
                     <th scope="row">{{$item->id}}</th>
                     <td>{{$item->name}}</td>
+                    <td>
+                        <img src="{{asset('storage/img/'.$item->url)}}" alt="" height="100px">
+                    </td>
                     {{-- Show --}}
                     <td>
                         <a href="/pokemons/{{$item->id}}" class="btn btn-primary">SHOW</a>
@@ -27,7 +31,7 @@
                         <form action="/pokemons/{{$item->id}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">DELETE</button>
+                            <button type="submit" class="btn btn-danger">DELETE</button>
                         </form>
                     </td>
                 </tr>

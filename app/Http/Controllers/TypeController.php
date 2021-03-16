@@ -45,7 +45,7 @@ class TypeController extends Controller
         $store->name = $request->name;
         $store->pokemon_id = $request->pokemon_id;
         $store->save();
-        return redirect('/pokemons');
+        return redirect()->back();
     }
 
     /**
@@ -90,6 +90,8 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $destroy = Type::find($id);
+        $destroy->delete();
+        return redirect('/');
     }
 }
